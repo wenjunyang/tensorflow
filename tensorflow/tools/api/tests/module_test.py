@@ -82,7 +82,7 @@ class ModuleTest(test.TestCase):
 
   def testInternalKerasImport(self):
     normalization_parent = layers.BatchNormalization.__module__.split('.')[-1]
-    if tf._major_api_version == 2:
+    if (tf.__version__).split('.')[0] == 2:
       self.assertEqual('normalization_v2', normalization_parent)
       self.assertTrue(layers.BatchNormalization._USE_V2_BEHAVIOR)
     else:
